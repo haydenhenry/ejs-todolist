@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
 
 app.get("/", (req, res)=>{
-    let day = date.getDay();
+    const day = date.getDate();
     res.render("list", {listTitle: day, newListItem: items});
 });
 
@@ -25,7 +25,7 @@ app.get("/about", (req, res)=>{
 })
 
 app.post("/", (req, res)=>{
-    let item = req.body.newItem;
+    const item = req.body.newItem;
     if(req.body.list === "Work List"){
         workItems.push(item);
         res.redirect("/work")
@@ -36,7 +36,7 @@ app.post("/", (req, res)=>{
 });
 
 app.post("/work", (req, res)=>{
-    let item = req.body.newItem;
+    const item = req.body.newItem;
     workItems.push(item);
     res.redirect("/work")
 });
